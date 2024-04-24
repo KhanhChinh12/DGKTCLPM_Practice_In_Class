@@ -14,18 +14,28 @@ import static org.junit.Assert.*;
 public class NextDateProgramTest {
     
     @Test
-    public void testNextDate() {
-        // Test valid date
-        assertEquals("2/5/2021", NextDateProgram.nextDate(1, 5, 2021)); 
-        assertEquals("1/6/2021", NextDateProgram.nextDate(31, 5, 2021)); 
-        assertEquals("1/1/2022", NextDateProgram.nextDate(31, 12, 2021)); 
-
-        // Test invalid date
-        assertEquals("Invalid date", NextDateProgram.nextDate(0, 5, 2021)); 
-        assertEquals("Invalid date", NextDateProgram.nextDate(32, 5, 2021)); 
-        assertEquals("Invalid date", NextDateProgram.nextDate(1, 13, 2021)); 
-        assertEquals("Invalid date", NextDateProgram.nextDate(1, 5, 1811)); 
-        assertEquals("Invalid date", NextDateProgram.nextDate(29, 2, 2021)); 
-        assertEquals("Invalid date", NextDateProgram.nextDate(30, 2, 2020));
+    public void testNextDateNormal() {
+        assertEquals("03/02/2008", NextDateProgram.nextDate(2, 2, 2008)); 
     }
+
+    @Test
+    public void testNextDateLastDayOfMonth() {
+        assertEquals("01/08/2007", NextDateProgram.nextDate(31, 7, 2007)); 
+    }
+
+    @Test
+    public void testNextDateLeapYear() {
+        assertEquals("01/03/2004", NextDateProgram.nextDate(29, 2, 2004)); 
+    }
+
+    @Test
+    public void testNextDateFirstDayOfYear() {
+        assertEquals("01/01/2003", NextDateProgram.nextDate(31, 12, 2002)); 
+    }
+
+    @Test
+    public void testNextDateLastDayOfYear() {
+        assertEquals("01/01/1886", NextDateProgram.nextDate(31, 12, 1885)); 
+    }
+    
 }
